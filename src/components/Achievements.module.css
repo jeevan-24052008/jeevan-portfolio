@@ -247,4 +247,9 @@
   .achievementCard:hover {
     transform: none;
   }
+  .achievementGrid,
+  .certGrid {
+    opacity: 1;
+    transform: none;
+  }
 }

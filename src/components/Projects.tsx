@@ -20,19 +20,19 @@ export function Projects() {
         />
 
         <div className={styles.featuredWrap}>
-          <div ref={ref1} className={`${vis1 ? styles.visible : ''} reveal`}>
+          <div ref={ref1} className={`${styles.featuredItem} ${vis1 ? styles.visible : ''}`}>
             <FeaturedProject project={featuredProjects[0]} />
           </div>
 
           <div className={styles.divider} />
 
-          <div ref={ref2} className={`${vis2 ? styles.visible : ''} reveal`}>
+          <div ref={ref2} className={`${styles.featuredItem} ${vis2 ? styles.visible : ''}`}>
             <FeaturedProject project={featuredProjects[1]} reverse />
           </div>
         </div>
 
         {/* Portfolio project card */}
-        <div ref={ref3} className={`${styles.portfolioWrap} ${vis3 ? styles.visible : ''} reveal`}>
+        <div ref={ref3} className={`${styles.portfolioWrap} ${vis3 ? styles.visible : ''}`}>
           <h3 className={styles.otherTitle}>Also built</h3>
           <div className={styles.otherGrid}>
             <PortfolioProjectCard />

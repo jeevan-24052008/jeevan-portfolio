@@ -9,10 +9,6 @@
   margin: var(--space-4) 0;
 }
 
-.portfolioWrap {
-  margin-top: var(--space-8);
-}
-
 .otherTitle {
   font-size: 1.25rem;
   font-weight: 700;
@@ -27,9 +23,30 @@
   gap: var(--space-3);
 }
 
+.featuredItem {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.portfolioWrap {
+  margin-top: var(--space-8);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featuredItem,
+  .portfolioWrap {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
