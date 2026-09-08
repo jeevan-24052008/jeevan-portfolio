@@ -1,0 +1,275 @@
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--space-4);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marker */
+.marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.markerDot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s var(--ease);
+  z-index: 1;
+}
+
+.markerNum {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.visible .markerDot {
+  background: var(--accent);
+}
+
+.visible .markerNum {
+  color: white;
+}
+
+.connector {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--accent), var(--border));
+  margin-top: var(--space-1);
+  min-height: 40px;
+}
+
+/* Stage content */
+.stageContent {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-2);
+  transition: all 0.3s var(--ease);
+}
+
+.stageContent:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+}
+
+.stageHeader {
+  margin-bottom: var(--space-3);
+}
+
+.stageLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stageTitle {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0.25rem;
+}
+
+/* Images */
+.stageImages {
+  display: flex;
+  gap: 0.625rem;
+  margin-bottom: var(--space-3);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.stageImageWrap {
+  flex-shrink: 0;
+  width: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  aspect-ratio: 16 / 10;
+  transition: border-color 0.3s var(--ease);
+}
+
+.stageImageWrap:hover {
+  border-color: var(--border-hover);
+}
+
+.stageImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stageDesc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-3);
+}
+
+.stageTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.625rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.stageLinks {
+  display: flex;
+  gap: 0.625rem;
+  margin-bottom: var(--space-3);
+}
+
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.5625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  transition: all 0.25s var(--ease);
+}
+
+.linkBtn:hover {
+  border-color: var(--border-hover);
+}
+
+.linkBtnLive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.linkBtnLive:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Complexity bar */
+.complexity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.complexityLabel {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.complexityBar {
+  flex: 1;
+  max-width: 200px;
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.complexityFill {
+  height: 100%;
+  background: linear-gradient(to right, var(--blue), var(--accent));
+  border-radius: 2px;
+  transition: width 0.8s var(--ease-out);
+}
+
+/* Arrow between stages */
+.arrowRow {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 18px;
+  margin: var(--space-1) 0;
+}
+
+.arrow {
+  color: var(--text-muted);
+  animation: arrowPulse 2s var(--ease) infinite;
+}
+
+@keyframes arrowPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    animation: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stage {
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-2);
+  }
+  .markerDot {
+    width: 36px;
+    height: 36px;
+  }
+  .markerNum {
+    font-size: 0.9375rem;
+  }
+  .stageContent {
+    padding: var(--space-3);
+  }
+  .stageTitle {
+    font-size: 1.125rem;
+  }
+  .stageImageWrap {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stageImageWrap {
+    width: 150px;
+  }
+  .arrowRow {
+    padding-left: 10px;
+  }
+}

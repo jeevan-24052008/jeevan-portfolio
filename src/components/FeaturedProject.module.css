@@ -1,0 +1,242 @@
+.featured {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-4) 0;
+}
+
+.reverse {
+  grid-template-columns: 1fr 1.1fr;
+}
+
+.reverse .galleryWrap {
+  order: 2;
+}
+
+/* Gallery */
+.galleryWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mainImage {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  aspect-ratio: 16 / 10;
+  transition: border-color 0.3s var(--ease);
+}
+
+.mainImage:hover {
+  border-color: var(--border-hover);
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.mainImage:hover img {
+  transform: scale(1.02);
+}
+
+.thumbnails {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.thumb {
+  flex: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  aspect-ratio: 16 / 10;
+  transition: border-color 0.25s var(--ease);
+  cursor: pointer;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbActive {
+  border-color: var(--accent);
+}
+
+.thumb:hover {
+  border-color: var(--border-hover);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-2);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.25rem 0.625rem;
+  border-radius: 100px;
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-2);
+}
+
+.description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-3);
+}
+
+/* Highlights */
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.checkIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Tech tags */
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3125rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: all 0.2s var(--ease);
+}
+
+.techTag:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* Links */
+.links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6875rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: all 0.25s var(--ease);
+}
+
+.linkBtn:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.linkBtnLive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.linkBtnLive:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .featured,
+  .reverse {
+    grid-template-columns: 1fr;
+  }
+  .reverse .galleryWrap {
+    order: 0;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlights {
+    gap: 0.375rem;
+  }
+  .highlightItem {
+    font-size: 0.8125rem;
+  }
+  .linkBtn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linkBtn:hover,
+  .mainImage:hover img {
+    transform: none;
+  }
+}
